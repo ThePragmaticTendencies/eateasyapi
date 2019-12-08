@@ -8,13 +8,13 @@ namespace  eateasyapi.Core
 {
     public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity> where TEntity : Entity
     {
-        private readonly IEntityDbContext<TEntity> context;
+        private readonly IDataBaseContext context;
 
         private DbContext Instance => context.Instance;
 
-        private DbSet<TEntity> Entities => context.Entities; 
+        private DbSet<TEntity> Entities => Instance.Set<TEntity>(); 
 
-        public RepositoryAsync(IEntityDbContext<TEntity> context)
+        public RepositoryAsync(IDataBaseContext context)
         {
             this.context = context;
         }

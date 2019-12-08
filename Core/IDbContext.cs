@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eateasyapi.Core
 {
-    public interface IDbContext
+    public interface IDataBaseContext
     {
         DbContext Instance { get; }
     }

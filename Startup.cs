@@ -28,9 +28,12 @@ namespace eateasyapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<IngredientContext>(options => options.UseInMemoryDatabase("Ingredients"));
-            services.AddScoped<IEntityDbContext<Ingredient>, IngredientContext>(); 
+            services.AddDbContext<DataBaseContext>(options => options.UseInMemoryDatabase("EatEasy"));
+
+            services.AddScoped<IDataBaseContext, DataBaseContext>();
             services.AddScoped<IRepositoryAsync<Ingredient>, RepositoryAsync<Ingredient>>();
+            services.AddScoped<IRepositoryAsync<Recipe>, RepositoryAsync<Recipe>>();
+
             services.AddControllers();
         }
 

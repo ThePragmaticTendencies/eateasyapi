@@ -7,11 +7,9 @@ namespace eateasyapi.Models
 {
     public class Recipe : Entity
     {
-        private IList<Ingredient> ingredients;
+        public string Name {get; set; }
 
-        public string Name {get; }
-
-        public IEnumerable<Ingredient> Ingredients => ingredients;
+        public IList<Ingredient> Ingredients { get; set; }
 
         public Recipe() { }
 
@@ -21,7 +19,7 @@ namespace eateasyapi.Models
             Validate.NotEmpty(recipe.Name);
 
             Name = recipe.Name;
-            ingredients = recipe.Ingredients.ToList();
+            Ingredients = recipe.Ingredients.ToList();
         }
     }
 }
